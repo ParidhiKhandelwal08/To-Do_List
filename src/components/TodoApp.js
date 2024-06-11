@@ -45,22 +45,22 @@ const TodoApp = () => {
         value={taskInput}
         onChange={(e) => setTaskInput(e.target.value)}
       />
-      <button onClick={addTask}>Add Task</button>
-      <div>
-        <button onClick={() => setFilter('all')}>All</button>
-        <button onClick={() => setFilter('completed')}>Completed</button>
-        <button onClick={() => setFilter('incomplete')}>Incomplete</button>
+      <button className="add-task" onClick={addTask}>Add Task</button>
+      <div className="filters">
+        <button className="filter" onClick={() => setFilter('all')}>All</button>
+        <button className="filter" onClick={() => setFilter('completed')}>Completed</button>
+        <button className="filter" onClick={() => setFilter('incomplete')}>Incomplete</button>
       </div>
       <ul>
         {filteredTasks.map((task, index) => (
           <li key={index}>
-            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
+            <span className={task.completed ? 'completed' : ''}>
               {task.text}
             </span>
-            <button onClick={() => toggleTaskCompletion(index)}>
+            <button className="complete" onClick={() => toggleTaskCompletion(index)}>
               {task.completed ? 'Unmark' : 'Complete'}
             </button>
-            <button onClick={() => removeTask(index)}>Remove</button>
+            <button className="remove" onClick={() => removeTask(index)}>Remove</button>
           </li>
         ))}
       </ul>
